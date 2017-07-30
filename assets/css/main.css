@@ -1,0 +1,21 @@
+@font-face {
+	font-family: 'Raleway';
+	src: url(../fonts/raleway/Raleway-Regular.ttf);
+}
+
+body {
+	font-family: 'Raleway';
+	background-image: url(../imgs/background.png);
+}
+
+.intro-content {
+	opacity: 1;
+	-webkit-transition: opacity 1000ms linear;
+		transition: opacity 1000ms linear;
+}
+
+.game-content {
+	opacity: 0;
+	-webkit-transition: opacity 1000ms linear;
+		transition: opacity 1000ms linear;
+}

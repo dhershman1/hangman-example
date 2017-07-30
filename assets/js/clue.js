@@ -1,0 +1,4 @@
+
+window.clues = (ptCost) => {
+
+};
