@@ -4,6 +4,9 @@ module.exports = {
 		'ecmaVersion': 6,
 		'sourceType': 'module'
 	},
+	'globals': {
+		'classie': true
+	},
 	'rules': {
 
 		/* Possible Errors */

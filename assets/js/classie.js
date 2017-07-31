@@ -1,5 +1,5 @@
 
-const classie = () => {
+window.classie = () => {
 	const hasClassList = 'classList' in document.documentElement;
 
 	const hasClass = (el, cl) => {
@@ -26,18 +26,18 @@ const classie = () => {
 		}
 	};
 
-	const toggleClass = (el, cl) => {
-		const fn = hasClass(el, cl) ? removeClass : addClass;
+	const animClass = (el, cl) => {
+		addClass(el, cl);
 
-		fn(el, cl);
+		setTimeout(() => {
+			removeClass(el, cl);
+		}, 1000);
 	};
 
 	return {
 		hasClass,
 		addClass,
 		removeClass,
-		toggleClass
+		animClass
 	};
 };
-
-window.classie = classie;

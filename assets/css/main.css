@@ -8,14 +8,70 @@ body {
 	background-image: url(../imgs/background.png);
 }
 
-.intro {
-	opacity: 1;
-	-webkit-transition: opacity 1000ms linear;
-		transition: opacity 1000ms linear;
+.stitched {
+	 padding: 1.1rem;
+	 margin: 0.8rem;
+	 background: hsl(354, 45%, 35%);
+	 color: hsl(0, 0%, 95%);
+	 font-size: 21px;
+	 font-weight: bold;
+	 line-height: 1.3rem;
+	 border: 0.2rem dashed hsl(0, 0%, 95%);
+	 border-radius: 0.8rem;
+	 box-shadow: 0 0 0 0.3rem hsl(354, 45%, 35%);, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+	 text-shadow: -1px -1px hsl(13, 20%, 60%);
+	 font-weight: normal;
 }
 
-.main {
-	opacity: 0;
-	-webkit-transition: opacity 1000ms linear;
-		transition: opacity 1000ms linear;
+.jumbotron, .card {
+	box-shadow: 0.2rem 0.2rem 1rem hsla(0, 0%, 0%, 0.2);
+}
+
+.hidden {
+	display: none;
+}
+
+.stats {
+	font-weight: 600;
+}
+
+.stats p {
+	-webkit-transition: background-color 250ms ease-out 250ms;
+  -moz-transition: background-color 250ms ease-out 250ms;
+  -o-transition: background-color 250ms ease-out 250ms;
+  transition: background-color 250ms ease-out 250ms;
+}
+
+.stats p:last-child {
+	border-bottom: 0;
+}
+
+.letters button.btn {
+	background-color: hsl(184.4, 24.4%, 55.9%);
+	border-color: hsl(184.4, 24.4%, 55.9%);
+	box-shadow: 0.2rem 0.2rem 1rem hsla(0, 0%, 0%, 0.2);
+	margin-top: 1rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.letters button.btn:hover {
+	background-color: hsl(354, 45%, 35%);
+	border-color: hsl(354, 45%, 35%);
+}
+
+.point-shop button.btn {
+	margin-top: 1rem;
+	background-color: hsl(184.4, 24.4%, 55.9%);
+	border-color: hsl(184.4, 24.4%, 55.9%);
+	box-shadow: 0.2rem 0.2rem 1rem hsla(0, 0%, 0%, 0.2);
+}
+
+.point-shop button.btn:hover {
+	background-color: hsl(354, 45%, 35%);
+	border-color: hsl(354, 45%, 35%);
+}
+
+.oops {
+	background-color: hsl(7, 86%, 40%);
 }

@@ -2,6 +2,8 @@
 <html>
 
 	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Hangman</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<link href="assets/css/main.css" rel="stylesheet">
@@ -12,7 +14,7 @@
 			<div class="row">
 				<div class="col-sm-12 text-center">
 					<img class="rounded" src="assets/imgs/logo.png" />
-					<div class="intro intro-content">
+					<div class="intro-content">
 						<h2 class="mt-4">Welcome! Shall we play a game?</h2>
 						<div class="btn-group mt-5">
 							<button class="btn btn-lg btn-success" type="button" value="easy">Play on Easy</button>
@@ -21,26 +23,73 @@
 						</div>
 					</div>
 
-					<div class="main main-content">
-						<div class="row">
-						</div>
+					<div class="main-content hidden">
 						<div class="row">
 							<div class="col-2">
-								<button class="btn btn-info clue" title="Get a Clue!">Clue</button>
-								<button class="btn btn-danger reset" title="Reset Everything">Reset</button>
-							</div>
-							<div class="btn-group col-10 letters">
+								<div class="card">
+									<div class="card-header">
+										<h2>Stats</h2>
+									</div>
+									<div class="card-block stats">
 
+									</div>
+								</div>
+							</div>
+							<div class="col-8">
+								<div class="jumbotron stitched">
+									<h1 class="hidden-word"></h1>
+								</div>
+								<div class="card">
+									<div class="card-header">
+										<h4>Solved Words</h4>
+									</div>
+									<div class="card-block">
+										<p class="card-text solved-words"></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="card">
+									<div class="card-header">
+										<h2>Clues</h2>
+									</div>
+									<div class="card-block clue-list">
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-2 mt-3">
+								<button class="btn btn-danger reset" title="Reset Everything" onClick="window.location.reload()">Reset</button>
+							</div>
+							<div class="col-8">
+								<div class="letters"></div>
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="col-12 point-shop">
+								<div class="alert alert-danger hidden" role="alert">
+									<strong>UH OH!</strong> <span id="errTxt"></span>
+								</div>
+								<h2 class="mb-2">Points Shop</h2>
+								<button class="btn btn-lg btn-primary" title="Gain a free extra life" value="extraLife">+1 Life</button>
+								<button class="btn btn-lg btn-primary" title="Get a clue related to the current word" value="clue">Reveal Clue</button>
+								<button class="btn btn-lg btn-primary" title="Reveal one of the letters" value="freeLetter">Reveal Letter</button>
+								<button class="btn btn-lg btn-primary" title="Reveal the entire word, this however will not reward you with points" value="freeWord">Reveal Word</button>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-12 point-shop"></div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<script src="assets/js/classie.js"></script>
-		<script src="assets/js/clue.js"></script>
+		<script>
+			window.hangman = {};
+			const classie = window.classie();
+		</script>
+		<script src="assets/js/engine.js"></script>
+		<script src="assets/js/point-shop.js"></script>
+		<script src="assets/js/touch.js"></script>
 		<script src="assets/js/index.js"></script>
 	</body>
 </html>
