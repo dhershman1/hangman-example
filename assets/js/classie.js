@@ -1,7 +1,9 @@
 
 const classie = () => {
+	const hasClassList = 'classList' in document.documentElement;
+
 	const hasClass = (el, cl) => {
-		if ('classList' in document.documentElement) {
+		if (hasClassList) {
 			return el.classList.contains(cl);
 		}
 
@@ -9,7 +11,7 @@ const classie = () => {
 	};
 
 	const addClass = (el, cl) => {
-		if ('classList' in document.documentElement) {
+		if (hasClassList) {
 			el.classList.add(cl);
 		} else if (!hasClass(el, cl)) {
 			el.className = `${el.className} ${cl}`;
@@ -17,7 +19,7 @@ const classie = () => {
 	};
 
 	const removeClass = (el, cl) => {
-		if ('classList' in document.documentElement) {
+		if (hasClassList) {
 			el.classList.remove(cl);
 		} else if (!hasClass(el, cl)) {
 			el.className = el.className.replace(new RegExp(`(^|\\s+) ${cl} (\\s+|$)`), ' ');

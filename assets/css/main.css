@@ -8,13 +8,13 @@ body {
 	background-image: url(../imgs/background.png);
 }
 
-.intro-content {
+.intro {
 	opacity: 1;
 	-webkit-transition: opacity 1000ms linear;
 		transition: opacity 1000ms linear;
 }
 
-.game-content {
+.main {
 	opacity: 0;
 	-webkit-transition: opacity 1000ms linear;
 		transition: opacity 1000ms linear;
