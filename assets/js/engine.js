@@ -1,10 +1,14 @@
+import {addSolvedWord, clearClues, displayStats, setWord, unlockKeys} from './touch.js';
+import {animClass} from './classie.js';
+import {ptShop} from './point-shop.js';
 
 /**
  * The main engine behind the game, finds words, compares guesses, etc.
  */
 
-const engine = (words, rules) => {
-	const touch = window.hangman.touch();
+
+export const engine = (words, rules) => {
+	let shop = {};
 	const tracker = {
 		lives: {
 			full: 'Current Lives',
@@ -27,10 +31,6 @@ const engine = (words, rules) => {
 		usedWords: []
 	};
 
-	const {ptShop} = window.hangman;
-	const {displayStats} = window.hangman.touch();
-	let shop = {};
-
 	const selectWord = () => {
 		const currWord = words[Math.floor(Math.random() * words.length)];
 
@@ -43,12 +43,11 @@ const engine = (words, rules) => {
 		for (let i = 0; i < currWord.name.length; i++) {
 			tracker.foundLetters.push('_');
 		}
-		touch.clearClues();
-		shop = ptShop(rules);
-		touch.setWord();
-		touch.displayStats();
 
-		console.log('word selected', currWord);
+		clearClues();
+		shop = ptShop(rules);
+		setWord(tracker);
+		displayStats(tracker);
 
 		return shop;
 	};
@@ -58,24 +57,24 @@ const engine = (words, rules) => {
 			tracker.wins.value++;
 			tracker.points.value += tracker.currWord.points;
 			tracker.usedWords.push(tracker.currWord.name);
-			touch.addSolvedWord(tracker.currWord.name);
+			addSolvedWord(tracker.currWord.name);
 		} else {
 			tracker.losses.value++;
 			tracker.lives.value = rules.lives;
 			tracker.points.value = 0;
 		}
 
+		tracker.foundLetters = [];
+		unlockKeys();
 		selectWord();
 	};
 
 	const verifyWord = () => {
 		if (tracker.currWord.name === tracker.foundLetters.join('')) {
-			tracker.foundLetters = [];
-
 			return newGame('win');
 		}
 
-		return touch.setWord();
+		return setWord(tracker);
 	};
 
 	const makeGuess = userGuess => {
@@ -97,19 +96,15 @@ const engine = (words, rules) => {
 
 		if (tracker.lives.value > 0) {
 			tracker.lives.value--;
-			displayStats();
+			displayStats(tracker);
 
-			return classie.animClass(document.querySelector('.lives'), 'oops');
+			return animClass(document.querySelector('.lives'), 'oops');
 		}
 
 		return newGame();
 	};
 
-	return {
-		tracker,
-		makeGuess,
-		selectWord
-	};
-};
+	selectWord();
 
-window.hangman.engine = engine;
+	return makeGuess;
+};

@@ -1,3 +1,6 @@
+import {addClass, removeClass} from './classie.js';
+import {engine} from './engine.js';
+
 /**
  * The core to the entire game
  * Builds out the displays, and sets up our data
@@ -5,9 +8,7 @@
  */
 
 
-const hangman = (difficulty = 'normal') => {
-	let {engine} = window.hangman;
-	const touch = window.hangman.touch();
+export const hangman = (difficulty = 'normal') => {
 	const words = [
 		{
 			name: 'AVON',
@@ -142,20 +143,34 @@ const hangman = (difficulty = 'normal') => {
 			multiplier: 1
 		}
 	};
-
 	const currRules = rules[difficulty];
+	const makeGuess = engine(words, currRules);
 
-	engine = engine(words, currRules);
-	window.hangman.engine = engine;
-	touch.buildBtns();
-	engine.selectWord();
+	const btnEvents = () => {
+
+		document.onkeyup = ({key}) => {
+			if (key.length === 1 && (/[A-Z]/i).test(key)) {
+				document.getElementById(`${key.toLowerCase()}Btn`).disabled = true;
+				makeGuess(key.toUpperCase());
+			}
+		};
+		document.querySelectorAll('.letters button').forEach(btn => {
+			btn.onclick = ({target}) => {
+				btn.disabled = true;
+				makeGuess(target.value);
+			};
+		});
+	};
+
+	btnEvents();
 
 };
 
 // Listner
-document.querySelector('.intro-content .btn-group').addEventListener('click', event => {
-
-	classie.addClass(document.querySelector('.intro-content'), 'hidden');
-	classie.removeClass(document.querySelector('.main-content'), 'hidden');
-	window.hangman.main = hangman(event.target.value);
+document.querySelectorAll('.intro-content button').forEach(el => {
+	el.onclick = ({target}) => {
+		addClass(document.querySelector('.intro-content'), 'hidden');
+		removeClass(document.querySelector('.main-content'), 'hidden');
+		window.hangman.main = hangman(target.value);
+	};
 });

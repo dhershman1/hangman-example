@@ -19,11 +19,11 @@ body {
 	 border: 0.2rem dashed hsl(0, 0%, 95%);
 	 border-radius: 0.8rem;
 	 box-shadow: 0 0 0 0.3rem hsl(354, 45%, 35%);, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-	 text-shadow: -1px -1px hsl(13, 20%, 60%);
+	 text-shadow: -0.1rem -0.1rem hsl(13, 20%, 60%);
 	 font-weight: normal;
 }
 
-.jumbotron, .card {
+.card {
 	box-shadow: 0.2rem 0.2rem 1rem hsla(0, 0%, 0%, 0.2);
 }
 
@@ -40,10 +40,6 @@ body {
   -moz-transition: background-color 250ms ease-out 250ms;
   -o-transition: background-color 250ms ease-out 250ms;
   transition: background-color 250ms ease-out 250ms;
-}
-
-.stats p:last-child {
-	border-bottom: 0;
 }
 
 .letters button.btn {

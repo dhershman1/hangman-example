@@ -1,3 +1,5 @@
+import {addClass, animClass} from './classie.js';
+import {addClue, displayStats, shopIssue, updateCost} from './touch.js';
 
 /**
  * Handles points spending and rewards!
@@ -6,81 +8,71 @@
  * hard - items double
  */
 
-
-const pointShop = rules => {
-	const {tracker} = window.hangman.engine;
-	const touch = window.hangman.touch();
+export const ptShop = (rules, tracker) => {
+	// Set our multiplier from rules
 	const currMulti = rules.multiplier;
-
 	let cluesShowing = 0;
+	// The items inside the point shop
 	const items = {
+		// Extra Life shop item
 		extraLife: {
 			cost: 2,
 			action: cost => {
+				// Verify they don't have our max live count
 				if (tracker.lives.value !== 99) {
+					// Go ahead and remove the points
 					tracker.points.value -= cost;
+					// Add on our aditional life
 					tracker.lives.value++;
-					touch.displayStats();
+					// Update our stats display
+					displayStats();
 
-					return classie.animClass(document.querySelector('.points'), 'oops');
+					// Call attention to our point decrease
+					return animClass(document.querySelector('.points'), 'oops');
 				}
 
-				return touch.shopIssue('Already Max Lives');
+				// They must have max lives, so display the alert
+				return shopIssue('Already Max Lives');
 			}
 		},
 		clue: {
 			cost: 1,
 			action: cost => {
+				// Verify we still have clues to show
 				if (cluesShowing < tracker.currWord.clues.length) {
 					tracker.points.value -= cost;
-					touch.addClue(tracker.currWord.clues[cluesShowing]);
+					addClue(tracker.currWord.clues[cluesShowing]);
 					cluesShowing++;
-					touch.displayStats();
+					displayStats();
 
-					return classie.animClass(document.querySelector('.points'), 'oops');
+					return animClass(document.querySelector('.points'), 'oops');
 				}
 
-				return touch.shopIssue('No More Clues!');
-			}
-		},
-		freeLetter: {
-			cost: 2,
-			action: ''
-		},
-		freeWord: {
-			cost: 5,
-			action: ''
-		}
-	};
-
-	const bumpCosts = () => {
-		let prop = '';
-
-		for (prop in items) {
-			if (Object.prototype.hasOwnProperty.call(items, prop)) {
-				items[prop].cost = items[prop].cost * currMulti;
+				return shopIssue('No More Clues!');
 			}
 		}
 	};
 
+	// Handles buying stuff from the points shop
 	const buyItem = itemName => {
-		classie.addClass(document.querySelector('.alert'), 'hidden');
+		addClass(document.querySelector('.alert'), 'hidden');
 		const currItem = items[itemName];
 
 		if (tracker.points.value >= currItem.cost) {
 			currItem.action(currItem.cost);
 
-			return bumpCosts();
+			items[itemName].cost = Math.floor(currItem.cost * currMulti);
+
+			return updateCost(items[itemName].cost, itemName);
 		}
 
-		return touch.shopIssue('You do not have enough points!');
+		return shopIssue('You do not have enough points!');
 	};
 
+	// Add listeners to our shop buttons
 	document.querySelectorAll('.point-shop button').forEach(btnEl => {
 		btnEl.onclick = ({target}) => {
 			buyItem(target.value);
 		};
 	});
 };
-
-window.hangman.ptShop = pointShop;
