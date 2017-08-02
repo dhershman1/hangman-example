@@ -24,7 +24,7 @@ export const engine = (words, rules) => {
 		},
 		points: {
 			full: 'Shop Points',
-			value: 99
+			value: 0
 		},
 		foundLetters: [],
 		currWord: {},

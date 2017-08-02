@@ -127,19 +127,20 @@ export const hangman = (difficulty = 'normal') => {
 		}
 	];
 	const rules = {
+		nightmare: {
+			lives: 1,
+			multiplier: 3
+		},
 		hard: {
 			lives: 5,
-			clueCost: 2,
 			multiplier: 2
 		},
 		normal: {
 			lives: 10,
-			clueCost: 1,
 			multiplier: 1.5
 		},
 		easy: {
 			lives: 15,
-			clueCost: 0.5,
 			multiplier: 1
 		}
 	};

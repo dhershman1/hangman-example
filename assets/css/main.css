@@ -8,6 +8,10 @@ body {
 	background-image: url(../imgs/background.png);
 }
 
+strong {
+	text-decoration: underline;
+}
+
 .stitched {
 	 padding: 1.1rem;
 	 margin: 0.8rem;
@@ -19,8 +23,23 @@ body {
 	 border: 0.2rem dashed hsl(0, 0%, 95%);
 	 border-radius: 0.8rem;
 	 box-shadow: 0 0 0 0.3rem hsl(354, 45%, 35%);, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-	 text-shadow: -0.1rem -0.1rem hsl(13, 20%, 60%);
+	 text-shadow: -0.08rem -0.08rem hsl(13, 20%, 60%);
 	 font-weight: normal;
+}
+
+.btn-nightmare {
+	color: hsl(0, 0%, 95%);
+	background-color: hsl(354, 45%, 35%);
+	border-color: hsl(354, 45%, 35%);
+}
+
+.btn-nightmare:hover {
+	background-color: hsl(354.7, 73.8%, 12%);
+	border-color: hsl(354.7, 73.8%, 12%);
+}
+
+.shop-legend {
+	font-weight: 600;
 }
 
 .card {
