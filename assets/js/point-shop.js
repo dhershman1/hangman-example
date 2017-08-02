@@ -16,7 +16,7 @@ export const ptShop = (rules, tracker) => {
 	const items = {
 		// Extra Life shop item
 		extraLife: {
-			cost: 2,
+			cost: 3,
 			action: cost => {
 				// Verify they don't have our max live count
 				if (tracker.lives.value !== 99) {
@@ -25,30 +25,37 @@ export const ptShop = (rules, tracker) => {
 					// Add on our aditional life
 					tracker.lives.value++;
 					// Update our stats display
-					displayStats();
+					displayStats(tracker);
 
 					// Call attention to our point decrease
-					return animClass(document.querySelector('.points'), 'oops');
+					animClass(document.querySelector('.points'), 'oops');
+
+					return true;
 				}
 
 				// They must have max lives, so display the alert
-				return shopIssue('Already Max Lives');
+				shopIssue('Already Max Lives');
+
+				return false;
 			}
 		},
 		clue: {
-			cost: 1,
+			cost: 2,
 			action: cost => {
 				// Verify we still have clues to show
 				if (cluesShowing < tracker.currWord.clues.length) {
 					tracker.points.value -= cost;
 					addClue(tracker.currWord.clues[cluesShowing]);
 					cluesShowing++;
-					displayStats();
+					displayStats(tracker);
+					animClass(document.querySelector('.points'), 'oops');
 
-					return animClass(document.querySelector('.points'), 'oops');
+					return true;
 				}
 
-				return shopIssue('No More Clues!');
+				shopIssue('No More Clues!');
+
+				return false;
 			}
 		}
 	};
@@ -59,9 +66,11 @@ export const ptShop = (rules, tracker) => {
 		const currItem = items[itemName];
 
 		if (tracker.points.value >= currItem.cost) {
-			currItem.action(currItem.cost);
+			const actionPass = currItem.action(currItem.cost);
 
-			items[itemName].cost = Math.floor(currItem.cost * currMulti);
+			if (actionPass) {
+				items[itemName].cost = Math.floor(currItem.cost * currMulti);
+			}
 
 			return updateCost(items[itemName].cost, itemName);
 		}

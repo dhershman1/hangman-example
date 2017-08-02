@@ -24,7 +24,7 @@ export const engine = (words, rules) => {
 		},
 		points: {
 			full: 'Shop Points',
-			value: 0
+			value: 99
 		},
 		foundLetters: [],
 		currWord: {},
@@ -45,7 +45,7 @@ export const engine = (words, rules) => {
 		}
 
 		clearClues();
-		shop = ptShop(rules);
+		shop = ptShop(rules, tracker);
 		setWord(tracker);
 		displayStats(tracker);
 
