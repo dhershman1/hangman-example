@@ -59,6 +59,7 @@ export const engine = (words, rules) => {
 			tracker.usedWords.push(tracker.currWord.name);
 			addSolvedWord(tracker.currWord.name);
 		} else {
+			tracker.foundLetters = [];
 			tracker.losses.value++;
 			tracker.lives.value = rules.lives;
 			tracker.points.value = 0;
