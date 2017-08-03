@@ -44,7 +44,6 @@ export const engine = (words, rules) => {
 			tracker.foundLetters.push('_');
 		}
 
-		console.log(currWord);
 		clearClues();
 		shop = ptShop(rules, tracker);
 		setWord(tracker);
