@@ -5,7 +5,7 @@
 
 body {
 	font-family: 'Raleway';
-	background-image: url(../imgs/background.png);
+	background: url(../imgs/background.png);
 }
 
 strong {
@@ -89,4 +89,13 @@ strong {
 
 .oops {
 	background-color: hsl(7, 86%, 40%);
+}
+
+body.nightmare {
+	background: #0b0a0f;
+}
+
+.nightmare .point-shop h4,
+.nightmare .point-shop h2 {
+	color: #FFF;
 }

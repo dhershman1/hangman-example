@@ -128,7 +128,7 @@ export const hangman = (difficulty = 'normal') => {
 	];
 	const rules = {
 		nightmare: {
-			lives: 1,
+			lives: 0,
 			multiplier: 3
 		},
 		hard: {
@@ -165,6 +165,12 @@ export const hangman = (difficulty = 'normal') => {
 
 	btnEvents();
 
+	if (difficulty === 'nightmare') {
+		addClass(document.querySelector('.main-logo'), 'hidden');
+		removeClass(document.querySelector('.nightmare-logo'), 'hidden');
+		addClass(document.querySelector('body'), 'nightmare');
+	}
+
 };
 
 // Listner
@@ -172,6 +178,6 @@ document.querySelectorAll('.intro-content button').forEach(el => {
 	el.onclick = ({target}) => {
 		addClass(document.querySelector('.intro-content'), 'hidden');
 		removeClass(document.querySelector('.main-content'), 'hidden');
-		window.hangman.main = hangman(target.value);
+		hangman(target.value);
 	};
 });
