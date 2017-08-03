@@ -147,23 +147,18 @@ export const hangman = (difficulty = 'normal') => {
 	const currRules = rules[difficulty];
 	const makeGuess = engine(words, currRules);
 
-	const btnEvents = () => {
-
-		document.onkeyup = ({key}) => {
-			if (key.length === 1 && (/[A-Z]/i).test(key)) {
-				document.getElementById(`${key.toLowerCase()}Btn`).disabled = true;
-				makeGuess(key.toUpperCase());
-			}
-		};
-		document.querySelectorAll('.letters button').forEach(btn => {
-			btn.onclick = ({target}) => {
-				btn.disabled = true;
-				makeGuess(target.value);
-			};
-		});
+	document.onkeyup = ({key}) => {
+		if (key.length === 1 && (/[A-Z]/i).test(key)) {
+			document.getElementById(`${key.toLowerCase()}Btn`).disabled = true;
+			makeGuess(key.toUpperCase());
+		}
 	};
-
-	btnEvents();
+	document.querySelectorAll('.letters button').forEach(btn => {
+		btn.onclick = ({target}) => {
+			btn.disabled = true;
+			makeGuess(target.value);
+		};
+	});
 
 	if (difficulty === 'nightmare') {
 		addClass(document.querySelector('.main-logo'), 'hidden');

@@ -40,7 +40,9 @@ export const addClue = clue => document.querySelector('.clue-list').innerHTML +=
 export const clearClues = () => document.querySelector('.clue-list').innerHTML = '';
 
 // Once a word is solved, add it to the solved section
-export const addSolvedWord = word => document.querySelector('.solved-words').innerHTML += `${word}, `;
+export const addSolvedWord = words => document.querySelector('.solved-words').innerHTML = words.join(', ');
+
+export const clearSolvedWord = () => document.querySelector('.solved-words').innerHTML = '';
 
 // Set a new word into our game box
 export const setWord = tracker => document.querySelector('.hidden-word').innerHTML = tracker.foundLetters.join(' ');

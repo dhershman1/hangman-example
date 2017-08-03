@@ -1,4 +1,4 @@
-import {addSolvedWord, clearClues, displayStats, setWord, unlockKeys} from './touch.js';
+import {addSolvedWord, clearClues, clearSolvedWord, displayStats, setWord, unlockKeys} from './touch.js';
 import {animClass} from './classie.js';
 import {ptShop} from './point-shop.js';
 
@@ -44,6 +44,7 @@ export const engine = (words, rules) => {
 			tracker.foundLetters.push('_');
 		}
 
+		console.log(currWord);
 		clearClues();
 		shop = ptShop(rules, tracker);
 		setWord(tracker);
@@ -57,12 +58,13 @@ export const engine = (words, rules) => {
 			tracker.wins.value++;
 			tracker.points.value += tracker.currWord.points;
 			tracker.usedWords.push(tracker.currWord.name);
-			addSolvedWord(tracker.currWord.name);
+			addSolvedWord(tracker.usedWords);
 		} else {
-			tracker.foundLetters = [];
 			tracker.losses.value++;
 			tracker.lives.value = rules.lives;
 			tracker.points.value = 0;
+			tracker.usedWords = [];
+			clearSolvedWord();
 		}
 
 		tracker.foundLetters = [];
