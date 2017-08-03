@@ -99,3 +99,9 @@ body.nightmare {
 .nightmare .point-shop h2 {
 	color: #FFF;
 }
+
+.nightmare .letters {
+	background-image: url(https://media.giphy.com/media/8JaorWsuY8mAM/giphy.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
