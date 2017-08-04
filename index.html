@@ -11,112 +11,110 @@
 
 	<body>
 		<div class="container-fluid">
-			<div class="row mt-3">
-				<div class="col-sm-12 text-center">
-					<img class="rounded main-logo" src="assets/imgs/logo.png" />
-					<img class="rounded nightmare-logo hidden" src="https://media.giphy.com/media/uhxfNlSRa6gF2/giphy.gif" />
-					<div class="intro-content">
-						<h2 class="mt-4">Welcome!</h2>
-						<h1>Shall we play a game?</h1>
-						<audio autoplay>
-							<source src="assets/audio/Shall-we-play-a-game.mp3" type="audio/mpeg" />
-						</audio>
-						<h3>You can use the <strong>keys on your keyboard</strong> or <strong>the buttons provided</strong> to input your answer</h3>
-						<div class="mt-5">
-							<button class="btn btn-lg btn-success" type="button" value="easy">Play on Easy</button>
-							<button class="btn btn-lg btn-primary" type="button" value="normal">Play on Normal</button>
-							<button class="btn btn-lg btn-danger" type="button" value="hard">Play on Hard</button>
-						</div>
-						<div class="mt-2">
-							<button class="btn btn-lg btn-nightmare" type="button" value="nightmare">Play on Nightmare</button>
-						</div>
+			<div class="col-md-12 text-center">
+				<img class="img-fluid rounded main-logo" src="assets/imgs/logo.png" />
+				<img class="img-fluid rounded nightmare-logo hidden" src="https://media.giphy.com/media/uhxfNlSRa6gF2/giphy.gif" />
+				<div class="intro-content">
+					<h2 class="mt-4">Welcome!</h2>
+					<h1>Shall we play a game?</h1>
+					<audio autoplay>
+						<source src="assets/audio/Shall-we-play-a-game.mp3" type="audio/mpeg" />
+					</audio>
+					<h3>You can use the <strong>keys on your keyboard</strong> or <strong>the buttons provided</strong> to input your answer</h3>
+					<div class="mt-5">
+						<button class="btn btn-lg btn-success" type="button" value="easy">Play on Easy</button>
+						<button class="btn btn-lg btn-primary" type="button" value="normal">Play on Normal</button>
+						<button class="btn btn-lg btn-danger" type="button" value="hard">Play on Hard</button>
 					</div>
+					<div class="mt-2">
+						<button class="btn btn-lg btn-nightmare" type="button" value="nightmare">Play on Nightmare</button>
+					</div>
+				</div>
 
-					<div class="main-content hidden">
-						<div class="row">
-							<div class="col-2">
-								<div class="card">
-									<div class="card-header">
-										<h2>Stats</h2>
-									</div>
-									<div class="card-block stats">
+				<div class="main-content hidden">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="card">
+								<div class="card-header">
+									<h2>Stats</h2>
+								</div>
+								<div class="card-block stats">
 
-									</div>
-								</div>
-							</div>
-							<div class="col-8">
-								<div class="stitched">
-									<h4>Tire Brands</h4>
-									<h1 class="hidden-word"></h1>
-								</div>
-								<div class="card">
-									<div class="card-header">
-										<h4>Solved Words</h4>
-									</div>
-									<div class="card-block">
-										<p class="card-text solved-words"></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="card">
-									<div class="card-header">
-										<h2>Clues</h2>
-									</div>
-									<div class="card-block clue-list">
-
-									</div>
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-2 mt-3">
-								<button class="btn btn-danger reset" title="Reset Everything" onClick="window.location.reload()">Reset</button>
+						<div class="col-md-8">
+							<div class="stitched">
+								<h4>Tire Brands</h4>
+								<h1 class="hidden-word"></h1>
 							</div>
-							<div class="col-8">
-								<div class="letters">
-									<button id="aBtn" class="btn btn-lg btn-primary" value="A">A</button>
-									<button id="bBtn" class="btn btn-lg btn-primary" value="B">B</button>
-									<button id="cBtn" class="btn btn-lg btn-primary" value="C">C</button>
-									<button id="dBtn" class="btn btn-lg btn-primary" value="D">D</button>
-									<button id="eBtn" class="btn btn-lg btn-primary" value="E">E</button>
-									<button id="fBtn" class="btn btn-lg btn-primary" value="F">F</button>
-									<button id="gBtn" class="btn btn-lg btn-primary" value="G">G</button>
-									<button id="hBtn" class="btn btn-lg btn-primary" value="H">H</button>
-									<button id="iBtn" class="btn btn-lg btn-primary" value="I">I</button>
-									<button id="jBtn" class="btn btn-lg btn-primary" value="J">J</button>
-									<button id="kBtn" class="btn btn-lg btn-primary" value="K">K</button>
-									<button id="lBtn" class="btn btn-lg btn-primary" value="L">L</button>
-									<button id="mBtn" class="btn btn-lg btn-primary" value="M">M</button>
-									<button id="nBtn" class="btn btn-lg btn-primary" value="N">N</button>
-									<button id="oBtn" class="btn btn-lg btn-primary" value="O">O</button>
-									<button id="pBtn" class="btn btn-lg btn-primary" value="P">P</button>
-									<button id="qBtn" class="btn btn-lg btn-primary" value="Q">Q</button>
-									<button id="rBtn" class="btn btn-lg btn-primary" value="R">R</button>
-									<button id="sBtn" class="btn btn-lg btn-primary" value="S">S</button>
-									<button id="tBtn" class="btn btn-lg btn-primary" value="T">T</button>
-									<button id="uBtn" class="btn btn-lg btn-primary" value="U">U</button>
-									<button id="vBtn" class="btn btn-lg btn-primary" value="V">V</button>
-									<button id="wBtn" class="btn btn-lg btn-primary" value="W">W</button>
-									<button id="xBtn" class="btn btn-lg btn-primary" value="X">X</button>
-									<button id="yBtn" class="btn btn-lg btn-primary" value="Y">Y</button>
-									<button id="zBtn" class="btn btn-lg btn-primary" value="Z">Z</button>
+							<div class="card">
+								<div class="card-header">
+									<h4>Solved Words</h4>
+								</div>
+								<div class="card-block">
+									<p class="card-text solved-words"></p>
 								</div>
 							</div>
 						</div>
-						<div class="row mt-4">
-							<div class="col-12 point-shop">
-								<div class="alert alert-danger hidden" role="alert">
-									<strong>UH OH!</strong> <span id="errTxt"></span>
+						<div class="col-md-2">
+							<div class="card">
+								<div class="card-header">
+									<h2>Clues</h2>
 								</div>
-								<h2 class="mb-2">Points Shop</h2>
-								<h4 class="shop-legend">Life Cost: <span id="extraLife-cost">3</span> | Clue Cost: <span id="clue-cost">2</span></h4>
-								<button class="btn btn-lg btn-primary" title="Gain an extra life" value="extraLife">+1 Life</button>
-								<button class="btn btn-lg btn-primary" title="Get a clue related to the current word" value="clue">Get Clue</button>
+								<div class="card-block clue-list">
+
+								</div>
 							</div>
 						</div>
 					</div>
-			</div>
+					<div class="row">
+						<div class="col-md-2 mt-3">
+							<button class="btn btn-danger reset" title="Reset Everything" onClick="window.location.reload()">Reset</button>
+						</div>
+						<div class="col-md-8">
+							<div class="letters">
+								<button id="aBtn" class="btn btn-lg btn-primary" value="A">A</button>
+								<button id="bBtn" class="btn btn-lg btn-primary" value="B">B</button>
+								<button id="cBtn" class="btn btn-lg btn-primary" value="C">C</button>
+								<button id="dBtn" class="btn btn-lg btn-primary" value="D">D</button>
+								<button id="eBtn" class="btn btn-lg btn-primary" value="E">E</button>
+								<button id="fBtn" class="btn btn-lg btn-primary" value="F">F</button>
+								<button id="gBtn" class="btn btn-lg btn-primary" value="G">G</button>
+								<button id="hBtn" class="btn btn-lg btn-primary" value="H">H</button>
+								<button id="iBtn" class="btn btn-lg btn-primary" value="I">I</button>
+								<button id="jBtn" class="btn btn-lg btn-primary" value="J">J</button>
+								<button id="kBtn" class="btn btn-lg btn-primary" value="K">K</button>
+								<button id="lBtn" class="btn btn-lg btn-primary" value="L">L</button>
+								<button id="mBtn" class="btn btn-lg btn-primary" value="M">M</button>
+								<button id="nBtn" class="btn btn-lg btn-primary" value="N">N</button>
+								<button id="oBtn" class="btn btn-lg btn-primary" value="O">O</button>
+								<button id="pBtn" class="btn btn-lg btn-primary" value="P">P</button>
+								<button id="qBtn" class="btn btn-lg btn-primary" value="Q">Q</button>
+								<button id="rBtn" class="btn btn-lg btn-primary" value="R">R</button>
+								<button id="sBtn" class="btn btn-lg btn-primary" value="S">S</button>
+								<button id="tBtn" class="btn btn-lg btn-primary" value="T">T</button>
+								<button id="uBtn" class="btn btn-lg btn-primary" value="U">U</button>
+								<button id="vBtn" class="btn btn-lg btn-primary" value="V">V</button>
+								<button id="wBtn" class="btn btn-lg btn-primary" value="W">W</button>
+								<button id="xBtn" class="btn btn-lg btn-primary" value="X">X</button>
+								<button id="yBtn" class="btn btn-lg btn-primary" value="Y">Y</button>
+								<button id="zBtn" class="btn btn-lg btn-primary" value="Z">Z</button>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-4">
+						<div class="col-md-12 point-shop">
+							<div class="alert alert-danger hidden" role="alert">
+								<strong>UH OH!</strong> <span id="errTxt"></span>
+							</div>
+							<h2 class="mb-2">Points Shop</h2>
+							<h4 class="shop-legend">Life Cost: <span id="extraLife-cost">3</span> | Clue Cost: <span id="clue-cost">2</span></h4>
+							<button class="btn btn-lg btn-primary" title="Gain an extra life" value="extraLife">+1 Life</button>
+							<button class="btn btn-lg btn-primary" title="Get a clue related to the current word" value="clue">Get Clue</button>
+						</div>
+					</div>
+				</div>
 		</div>
 		<script src="dist/hangman.umd.js"></script>
 	</body>
