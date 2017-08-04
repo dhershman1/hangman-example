@@ -16,13 +16,14 @@ export const unlockKeys = () => {
 export const displayStats = tracker => {
 	const statsEl = document.querySelector('.stats');
 	let key = '';
+	let html = '';
 
-	statsEl.innerHTML = '';
 	for (key in tracker) {
 		if (Object.prototype.hasOwnProperty.call(tracker, key) && tracker[key].full) {
-			statsEl.innerHTML += `<p class="card-text ${key}">${tracker[key].full}: ${tracker[key].value}</p>`;
+			html += `<p class="card-text ${key}">${tracker[key].full}: ${tracker[key].value}</p>`;
 		}
 	}
+	statsEl.innerHTML = html;
 };
 
 // Unhide the alert and set it's message
