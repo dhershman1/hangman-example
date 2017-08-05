@@ -128,7 +128,7 @@ export const hangman = (difficulty = 'normal') => {
 	];
 	const rules = {
 		nightmare: {
-			lives: 0,
+			lives: 2,
 			multiplier: 3
 		},
 		hard: {
