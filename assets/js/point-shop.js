@@ -8,6 +8,11 @@ import {addClue, displayStats, shopIssue, updateCost} from './touch.js';
  * hard - items double
  */
 
+/**
+ * Factory function to create our point shop system
+ * @param  {Object} rules   the current rules set object
+ * @param  {Object} tracker the current tracker object
+ */
 export const ptShop = (rules, tracker) => {
 	// Set our multiplier from rules
 	const currMulti = rules.multiplier;
@@ -17,6 +22,11 @@ export const ptShop = (rules, tracker) => {
 		// Extra Life shop item
 		extraLife: {
 			cost: 3,
+			/**
+			 * The Extra life Action function
+			 * @param  {Number} cost the cost of that item
+			 * @return {Boolean}      returns a boolean if the action ran or not
+			 */
 			action: cost => {
 				// Verify they don't have our max live count
 				if (tracker.lives.value !== 99) {
@@ -41,6 +51,11 @@ export const ptShop = (rules, tracker) => {
 		},
 		clue: {
 			cost: 2,
+			/**
+			 * The Clue Action function
+			 * @param  {Number} cost the cost of that item
+			 * @return {Boolean}      returns a boolean if the action ran or not
+			 */
 			action: cost => {
 				// Verify we still have clues to show
 				if (cluesShowing < tracker.currWord.clues.length) {
@@ -60,21 +75,31 @@ export const ptShop = (rules, tracker) => {
 		}
 	};
 
-	// Handles buying stuff from the points shop
+	/**
+	 * The basic buy item functionality of the shop
+	 * @param  {String} itemName the name of the item purchased
+	 * @return {Function}          Returns a function call to run a UI update
+	 */
 	const buyItem = itemName => {
+		// Make sure to hide our alert box
 		addClass(document.querySelector('.alert'), 'hidden');
 		const currItem = items[itemName];
 
+		// Verify there are enough points to purchase the item
 		if (tracker.points.value >= currItem.cost) {
+			// Trigger the action of the item so it applies itself to the game
 			const actionPass = currItem.action(currItem.cost);
 
+			// If the action is a success, then we need to apply our multiplier to cost
 			if (actionPass) {
 				items[itemName].cost = Math.floor(currItem.cost * currMulti);
 			}
 
+			// Update the UI to reflect these costs
 			return updateCost(items[itemName].cost, itemName);
 		}
 
+		// If there isn't enough points update the UI to show this
 		return shopIssue('You do not have enough points!');
 	};
 

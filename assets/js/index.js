@@ -147,12 +147,15 @@ export const hangman = (difficulty = 'normal') => {
 	const currRules = rules[difficulty];
 	const makeGuess = engine(words, currRules);
 
+	// Build out our listeners for the keyboard events
 	document.onkeyup = ({key}) => {
 		if (key.length === 1 && (/[A-Z]/i).test(key)) {
 			document.getElementById(`${key.toLowerCase()}Btn`).disabled = true;
 			makeGuess(key.toUpperCase());
 		}
 	};
+
+	// Build out our listeners for the button elements on the page
 	document.querySelectorAll('.letters button').forEach(btn => {
 		btn.onclick = ({target}) => {
 			btn.disabled = true;
@@ -160,6 +163,7 @@ export const hangman = (difficulty = 'normal') => {
 		};
 	});
 
+	// Apply nightmare styles
 	if (difficulty === 'nightmare') {
 		addClass(document.querySelector('.main-logo'), 'hidden');
 		removeClass(document.querySelector('.nightmare-logo'), 'hidden');
@@ -168,7 +172,7 @@ export const hangman = (difficulty = 'normal') => {
 
 };
 
-// Listner
+// Listner for our difficulty buttons
 document.querySelectorAll('.intro-content button').forEach(el => {
 	el.onclick = ({target}) => {
 		addClass(document.querySelector('.intro-content'), 'hidden');
